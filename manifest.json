@@ -1,0 +1,11 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "game-app-ten-ivory.vercel",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "game-app-ten-ivory.vercel",
+  "start_url": "/",
+  "theme_color": "#0a0f1f"
+}
