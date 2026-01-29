@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Atrapa el Botón</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Manifest embebido --> 
+  <link rel="manifest" href="data:application/manifest+json,{
+  &quot;name&quot;:&quot;Atrapa el Botón&quot;,
+  &quot;short_name&quot;:&quot;Juego&quot;,
+  &quot;start_url&quot;:&quot;./&quot;,
+  &quot;display&quot;:&quot;standalone&quot;,
+  &quot;background_color&quot;:&quot;#0a0f1f&quot;,
+  &quot;theme_color&quot;:&quot;#0a0f1f&quot;
+}"> 
+  <meta name="theme-color" content="#0a0f1f"> 
+  <style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0a0f1f;
+  color:white;
+  text-align:center;
+}
+h1{color:gold}
+#game{
+  position:relative;
+  width:100vw;
+  height:80vh;
+  border-top:2px solid #333;
+}
+#btn{
+  position:absolute;
+  padding:15px;
+  font-size:18px;
+  background:crimson;
+  color:white;
+  border:none;
+  border-radius:12px;
+}
+</style> 
+ </head> 
+ <body> 
+  <h1>🎮 Atrapa el Botón</h1> 
+  <p id="score">Puntos: 0</p> 
+  <div id="game"> <button id="btn">¡Tócame!</button> 
+  </div> 
+  <script>
+let score = 0;
+const btn = document.getElementById("btn");
+const game = document.getElementById("game");
+const scoreText = document.getElementById("score");
+
+function mover(){
+  btn.style.left =
+    Math.random()*(game.clientWidth-btn.offsetWidth)+"px";
+  btn.style.top =
+    Math.random()*(game.clientHeight-btn.offsetHeight)+"px";
+}
+
+btn.onclick = () => {
+  score++;
+  scoreText.textContent = "Puntos: "+score;
+  mover();
+};
+
+mover();
+
+// Registrar Service Worker
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
+}
+</script> 
+ 
+</body></html>
